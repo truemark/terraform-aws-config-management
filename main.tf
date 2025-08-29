@@ -2,7 +2,7 @@ module "account" {
   count  = var.organization_managed ? 0 : 1
   source = "./modules/account"
 
-  conformance_packs         = local.final_conformance_packs
+  conformance_packs        = local.final_conformance_packs
   pack_name_prefix         = var.pack_name_prefix
   delivery_s3_bucket       = local.delivery_s3_bucket_final
   delivery_s3_key_prefix   = local.delivery_s3_key_prefix_final
@@ -18,8 +18,8 @@ module "organization" {
   source = "./modules/organization"
 
   conformance_packs      = local.final_conformance_packs
-  pack_name_prefix      = var.pack_name_prefix
-  delivery_s3_bucket    = local.delivery_s3_bucket_final
+  pack_name_prefix       = var.pack_name_prefix
+  delivery_s3_bucket     = local.delivery_s3_bucket_final
   delivery_s3_key_prefix = local.delivery_s3_key_prefix_final
-  excluded_accounts     = var.excluded_accounts
+  excluded_accounts      = var.excluded_accounts
 }

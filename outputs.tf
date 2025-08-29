@@ -2,7 +2,7 @@ output "conformance_pack_arns" {
   description = "ARNs of the created conformance packs"
   value = var.organization_managed ? (
     length(module.organization) > 0 ? module.organization[0].conformance_pack_arns : {}
-  ) : (
+    ) : (
     length(module.account) > 0 ? module.account[0].conformance_pack_arns : {}
   )
 }
@@ -11,7 +11,7 @@ output "conformance_pack_names" {
   description = "Names of the created conformance packs"
   value = var.organization_managed ? (
     length(module.organization) > 0 ? module.organization[0].conformance_pack_names : {}
-  ) : (
+    ) : (
     length(module.account) > 0 ? module.account[0].conformance_pack_names : {}
   )
 }
