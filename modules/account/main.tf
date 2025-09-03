@@ -3,8 +3,8 @@ resource "aws_config_conformance_pack" "pack" {
 
   name                    = "${var.pack_name_prefix}${each.key}"
   template_body          = each.value.template_body
-  delivery_s3_bucket     = var.delivery_s3_bucket
-  delivery_s3_key_prefix = var.delivery_s3_key_prefix
+  delivery_s3_bucket     = var.delivery_s3_bucket != null ? var.delivery_s3_bucket : null
+  delivery_s3_key_prefix = var.delivery_s3_bucket != null ? var.delivery_s3_key_prefix : null
 
   dynamic "input_parameter" {
     for_each = try(each.value.input_parameters, {})
