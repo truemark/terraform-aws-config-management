@@ -13,6 +13,7 @@ variable "pack_name_prefix" {
 variable "delivery_s3_bucket" {
   description = "S3 bucket for AWS Config delivery channel"
   type        = string
+  default     = null
 }
 
 variable "delivery_s3_key_prefix" {
@@ -36,6 +37,7 @@ variable "config_recorder_name" {
 variable "config_recorder_role_arn" {
   description = "IAM role ARN for AWS Config configuration recorder"
   type        = string
+  default     = null
 }
 
 variable "create_delivery_channel" {
