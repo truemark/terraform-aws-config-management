@@ -80,7 +80,7 @@ locals {
 
   # Use specific commit/tag or latest
   template_ref                  = var.template_version == "latest" ? "master" : var.template_version
-  aws_conformance_pack_base_url = "https://raw.githubusercontent.com/awslabs/aws-config-rules/${local.template_ref}/aws-config-conformance-packs"
+  aws_conformance_pack_base_url = "${var.template_repository_url}/${local.template_ref}/aws-config-conformance-packs"
 }
 
 # Fetch templates dynamically from AWS repository
