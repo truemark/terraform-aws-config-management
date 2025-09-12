@@ -81,3 +81,9 @@ variable "delivery_channel_name" {
   type        = string
   default     = "default"
 }
+
+variable "template_repository_url" {
+  description = "Base URL for conformance pack templates repository"
+  type        = string
+  default     = "https://raw.githubusercontent.com/awslabs/aws-config-rules"
+}
