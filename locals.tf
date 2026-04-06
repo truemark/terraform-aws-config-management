@@ -19,7 +19,7 @@ locals {
     "nist-800-171"                          = "Operational-Best-Practices-for-NIST-800-171.yaml"
     "hipaa"                                 = "Operational-Best-Practices-for-HIPAA-Security.yaml"
     "pci-dss"                               = "Operational-Best-Practices-for-PCI-DSS.yaml"
-    "pci-dss-4.0-include-global"            = "Operational-Best-Practices-for-PCI-DSS-v4.0-including-global-resourcetypes.yml"
+    "pci-dss-4-0-include-global"            = "Operational-Best-Practices-for-PCI-DSS-v4.0-including-global-resourcetypes.yml"
     "sox"                                   = "Operational-Best-Practices-for-SOX.yaml"
     "fedramp-low"                           = "Operational-Best-Practices-for-FedRAMP-Low.yaml"
     "fedramp-moderate"                      = "Operational-Best-Practices-for-FedRAMP-Moderate.yaml"
