@@ -1,2 +1,2 @@
-version=v1.0.3
-next_version=v1.0.4
+version=v1.0.4
+next_version=v1.0.5
