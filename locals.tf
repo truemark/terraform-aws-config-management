@@ -101,12 +101,26 @@ data "http" "conformance_pack_templates" {
 }
 
 locals {
+  # Extract default parameter values from YAML templates
+  # Parse the Parameters section and extract Default values
+  conformance_pack_defaults = {
+    for pack_name, template in data.http.conformance_pack_templates :
+    pack_name => {
+      for match in regexall("(?m)^  ([A-Za-z0-9]+Param[A-Za-z0-9]+):\\s*\\n(?:.*\\n)*?    Default:\\s*'?([^'\\n]+)'?", template.response_body) :
+      match[0] => match[1]
+    }
+  }
+
   # Process the requested conformance packs with fetched templates
   conformance_packs_to_deploy = {
     for pack_name in var.conformance_packs :
     pack_name => {
-      template_body    = data.http.conformance_pack_templates[pack_name].response_body
-      input_parameters = lookup(var.conformance_pack_parameters, pack_name, {})
+      template_body = data.http.conformance_pack_templates[pack_name].response_body
+      # Merge defaults with user-provided parameters (user parameters override defaults)
+      input_parameters = merge(
+        lookup(local.conformance_pack_defaults, pack_name, {}),
+        lookup(var.conformance_pack_parameters, pack_name, {})
+      )
     }
     if contains(keys(local.pack_url_mapping), pack_name)
   }
